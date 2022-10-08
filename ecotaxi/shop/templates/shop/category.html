@@ -1,0 +1,112 @@
+{% extends 'main/layout.html' %}
+
+
+{% block style %}
+#dropdownMenuLink2 {
+    color: #198754;
+       }
+{% endblock %}
+
+{% block title %}Магазин{% endblock %}
+
+{% block content %}
+<div class="shop_body">
+    <div class="shop_category">
+        <div class="sep_layout_3"></div>
+        <ul>
+        <!-- выводим все категории товаров -->
+        {% for c in cats %}
+            {% if c.slug == cat_slug %}
+                <li class="selected">{{c.name}}</li>
+            {% else %}
+                <li class="not_selected"><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="products">
+        <!-- перебираем все записи в списке категорий -->
+        {% for c in cats %}
+            <!-- выводим название той категории, слаг которой находится в адресной строке -->
+            {% if c.slug == cat_slug %}
+                <div class="name_category"><h5>{{c.name}}</h5></div>
+            {% endif %}
+        {% endfor %}
+        <ul>
+        <!-- заполняем карточку с товаром -->
+        {% for c in page_obj %}
+            <li>
+            <br><br><br><br><br><br><br><br><br><br><br>
+            <a href="{{ c.get_absolute_url }}">{{c.title}}</a><br>
+            <!-- <img class="img_product" src="{{c.photo.url}}"> -->
+            <s style="font-size: 80%;">Арт.: {{c.code}}</s><br>
+            <button type="button" class="py-0 pb-1 mt-1 btn btn-success"><s style="font-family: 'TT Norms Light';
+            font-size: 80%;">Купить</s></button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp<b class="price" style="font-size: 120%;">{{c.price}}</b>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+<!-- навигация по страницам -->
+{% if page_obj.has_other_pages %}
+    <div class="paginator_buttons">
+        <ul>
+            <!-- кнопка перехода к первой странице -->
+            {% if page_obj.number > 2 %}
+                <li class="arrow_paginator1_left"><a title="к первой странице" href="?page=1">
+                    <s><i class="arrow_paginator_first_left left"></i><i class="arrow_paginator_first_right left"></i></s></a></li>
+            {% endif %}
+            <!-- кнопка перехода к предыдущей странице странице -->
+            {% if page_obj.has_previous %}
+                <li class="arrow_paginator1_left"><a title="к предыдущей странице" href="?page={{ page_obj.previous_page_number }}">
+                    <s><i class="arrow_paginator2 left"></i></s></a></li>
+            {% endif %}
+            <!-- вывод номеров страниц, если номер текущей страницы меньше 4 -->
+            {% if page_obj.number < 4 %}
+                {% for p in first_five_pages %}
+                    {% if page_obj.number == p %}
+                        <li class="selected"><a>{{ p }}</a></li>
+                    {% else %}
+                        <li class="not_selected"><a href="?page={{ p }}">{{ p }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            <!-- вывод номеров страниц, если текущая страница последняя или предпоследняя -->
+            {% elif page_obj.number > last_page_2 %}
+                {% for p in last_five_pages %}
+                    {% if page_obj.number == p %}
+                        <li class="selected"><a>{{ p }}</a></li>
+                    {% else %}
+                        <li class="not_selected"><a href="?page={{ p }}">{{ p }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {% for p in page_obj.paginator.page_range %}
+                    {% if p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                        {% if page_obj.number == p %}
+                            <li class="selected"><a>{{ p }}</a></li>
+                        {% else %}
+                            <li class="not_selected"><a href="?page={{ p }}">{{ p }}</a></li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            <!-- кнопка перехода к последней странице (цифра вместо стрелочки) -->
+            {% if page_obj.number < last_page_2 and num_pages != 4 %}
+                <li><b class="ellipsis">...</b></li>
+                <li class="not_selected"><a href="?page={{ last_page }}">{{ last_page }}</a></li>
+            {% endif %}
+            <!-- кнопка перехода к следующей странице -->
+            {% if page_obj.has_next %}
+                <li class="arrow_paginator1_right"><a title="к следующей странице" href="?page={{ page_obj.next_page_number }}">
+                    <s><i class="arrow_paginator2 right"></i></s></a></li>
+            {% endif %}
+            <!-- кнопка перехода к последней странице -->
+            {% if page_obj.number <= last_page_2 %}
+                <li class="arrow_paginator1_left right_right"><a title="к последней странице" href="?page={{ last_page }}">
+                    <s><i class="arrow_paginator_first_left left"></i><i class="arrow_paginator_first_right left"></i></s></a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}
+{% endblock %}

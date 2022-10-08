@@ -1,0 +1,53 @@
+{% extends 'main/layout.html' %}
+
+{% block style %}
+#kabinet {
+        background-color: #00BFFF;
+       }
+{% endblock %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+<div class="shop_body">
+    <div class="shop_category">
+        <div class="sep_layout_3"></div>
+        <ul>
+            <li>Мой аккаунт</li>
+            <li style="margin-left: 20px; font-size: 11px;"><a href="{{ c.get_absolute_url }}">Заказы</a></li>
+            <li style="margin-left: 20px; font-size: 11px;"><a href="{{ c.get_absolute_url }}">Текущие выбранные услуги</a></li>
+        </ul>
+        <div class="sep_layout_4"></div>
+        <ul>
+            <li>Настройки</li>
+            <li style="margin-left: 20px; font-size: 11px;"><a href="{{ c.get_absolute_url }}">Профиль</a></li>
+            <li style="margin-left: 20px; font-size: 11px;"><a href="{{ c.get_absolute_url }}">Адресная книга</a></li>
+            <li style="margin-left: 20px; font-size: 11px;"><a href="{{ c.get_absolute_url }}">Платежные данные</a></li>
+        </ul>
+    </div>
+    <div class="products">
+        <!-- перебираем все записи в списке категорий -->
+        {% for c in cats %}
+            <!-- выводим название той категории, слаг которой находится в адресной строке -->
+            {% if c.slug == cat_slug %}
+                <div class="name_category"><h5>{{c.name}}</h5></div>
+            {% endif %}
+        {% endfor %}
+        <ul>
+        <!-- заполняем карточку с товаром -->
+        {% for c in page_obj %}
+            <li>
+            <br><br><br><br><br><br><br><br><br><br><br>
+            <a href="{{ c.get_absolute_url }}">{{c.title}}</a><br>
+            <!-- <img class="img_product" src="{{c.photo.url}}"> -->
+            <s style="font-size: 80%;">Арт.: {{c.code}}</s><br>
+            <button type="button" class="py-0 pb-1 mt-1 btn btn-success"><s style="font-family: 'TT Norms Light';
+            font-size: 80%;">Купить</s></button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp<b class="price" style="font-size: 120%;">{{c.price}}</b>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+

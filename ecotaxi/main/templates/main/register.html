@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{% block style %}
+#register {
+        background-color: #00BFFF;
+       }
+{% endblock %}
+
+{% block title %}Регистрация нового пользователя{% endblock %}
+
+{% block content %}
+<div class="form_conteiner">
+    <form class="add_product" method="post">
+        {% csrf_token %}
+
+        {% for f in form %}
+        <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label><s class="form-input">{{ f }}</s></p>
+        <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
+        <button class="btn btn-secondary" type="submit">Зарегистрировать</button>
+    </form>
+</div>
+{% endblock %}

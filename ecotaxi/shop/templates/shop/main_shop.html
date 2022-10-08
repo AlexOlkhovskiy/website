@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+
+{% block style %}
+#main_shop{
+       }
+{% endblock %}
+
+{% block title %}Магазин{% endblock %}
+
+{% block content %}
+<div class="shop_category">
+    <ul>
+    {% for c in cats %}
+        {% if c.pk == cat_selected %}
+            <li class="selected">{{c.name}}</li>
+        {% else %}
+            <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

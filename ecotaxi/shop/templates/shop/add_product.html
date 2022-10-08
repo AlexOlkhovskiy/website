@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %}
+
+
+{% block style %}
+#add_product {
+       }
+{% endblock %}
+
+{% block title %}Добавление продукта{% endblock %}
+
+{% block content %}
+
+<div class="form_conteiner">
+    <form class="add_product" action="{% url 'add_product' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-error">{{ form.none_field_errors }}</div>
+        {{ form.as_p }}
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+{% endblock %}

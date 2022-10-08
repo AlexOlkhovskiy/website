@@ -1,0 +1,594 @@
+/* необходимо, чтобы в бутстреп меню раскрывалось при наведении курсора, а не при нажатии */
+@media (min-width: 768px) {.dropdown:hover .dropdown-menu{margin-top:0;display:block}}
+
+/* подключаем шрифты */
+@font-face {
+    font-family: 'TT Norms';
+    font-style: normal;
+    font-weight: 500;
+    src: local('TT Norms Medium'), local('TT-Norms-Medium'),
+        url('../fonts/TTNorms-Medium.woff2') format('woff2'),
+        url('../fonts/TTNorms-Medium.woff') format('woff'),
+        url('../fonts/TTNorms-Medium.ttf') format('truetype');
+  }
+
+@font-face {
+    font-family: 'TT Norms Light';
+    font-style: normal;
+    font-weight: 300;
+    src: local('TT Norms Light'), local('TT-Norms-Light'),
+        url('../fonts/TTNorms-Light.woff2') format('woff2'),
+        url('../fonts/TTNorms-Light.woff') format('woff'),
+        url('../fonts/TTNorms-Light.ttf') format('truetype');
+  }
+
+/* убираем все внешние и внутренние отступы, которые есть по умолчанию, убираем подчёркивание текста */
+* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* подключаем шрифт ко всему тексту на странице */
+body {
+    font-family: "TT Norms";
+    margin: 0;
+    padding: 0;
+}
+
+/* Убираем стандартный маркер спойлера для Chrome */
+details summary::-webkit-details-marker {
+  display: none
+}
+/* Убираем стандартный маркер спойлера для Firefox */
+details > summary {
+  list-style: none;
+}
+
+/* белая полоска отделяющая меню сайта от верхней границы сайта */
+.sep_top {
+    height: 10px;
+}
+
+/* общий контейнер с разделами меню */
+nav {
+    position:-webkit-sticky;
+    position:sticky;
+    top: 0;
+    background-color: #FFFFFF;
+    white-space: nowrap;
+
+}
+
+/* стилизация каждого отдельного контейнера для раздела в меню */
+nav ul {
+    display: flex;
+    justify-content: center;
+    margin: auto auto;
+    font-weight: bold;
+    padding: 0;
+}
+
+nav ul li a {
+    display: block;
+}
+
+/* стилизация выпадающих списков в меню */
+#dropdownMenuLink1, #dropdownMenuLink2 {
+    background-color: white;
+    color: black;
+    border: none;
+}
+
+/* эффекты при наведении на разделы меню в шапке сайта
+#nav_menu1:hover, #nav_menu2:hover, #nav_menu3:hover, #nav_menu4:hover {
+    color: #198754;
+}*/
+
+#nav_menu1:hover, #nav_menu2:hover, #nav_menu3:hover, #nav_menu4:hover {
+    color: #088256;
+}
+
+#second_menu {
+    width: 550px;
+}
+
+.second_nav {
+    width: 900px;
+    height: 40px;
+    margin: auto auto;
+    background-color: #f8f7f9;
+}
+
+.second_nav li {
+    margin: 7px auto;
+}
+
+a, .btn-link {
+    text-decoration: none;
+    color: black;
+    font-weight: Medium;
+}
+
+ul, li {
+    list-style: none;
+}
+
+
+a:hover {
+    color: #16CD8B;
+}
+
+.btn-secondary:hover {
+    background-color: #16CD8B;
+}
+
+.btn-secondary {
+    background-color: #088256;
+}
+
+#dropdownMenuLink1:hover, #dropdownMenuLink2:hover {
+    color: #088256;
+}
+
+.dropdown-item:hover {
+    background-color: #C9E5D8;
+}
+
+.btn-link {
+    padding: 6px auto;
+    border: none;
+}
+
+/* контейнер под название сайта по центру шапки с навигацией */
+#site-name {
+    color: #088256;
+    font-weight: 600;
+    margin: auto 20px;
+    font-weight: bold;
+}
+
+/* полоса-разделитель между двумя горизонтальными меню */
+#sep_layout_2 {
+    display: block;
+    height: 1px;
+    width: 900px;
+    background-color: #e2e1e3;
+    margin: 10px auto 0;
+    border-radius: 5px;
+}
+
+/* полоса-разделитель, ниже которой идёт подвал сайта */
+#sep_layout {
+    display: block;
+    height: 4px;
+    width: 900px;
+    background-color: #088256;
+    margin: auto;
+    border-radius: 5px;
+}
+
+/* кнопка пролистывающая страницу в самый верх */
+#back_to_top {
+    position: fixed;
+    background: #088256;
+    text-align: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    right: 100px;
+    bottom: 100px;
+}
+
+#back_to_top a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-top: 4px;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 6px;
+    border-color: white;
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+/* подвал сайта */
+footer {
+    bottom: 0;
+    width: 900px;
+    height: 264px;
+    margin: 41px auto auto;
+    display: flex;
+}
+
+/* надпись с названием сайта в подвале */
+#footer_block1 h2 {
+    color: #088256;
+    margin: 0;
+    font-weight: bold;
+    float: left;
+    width: 330px;
+}
+
+/* второй контейнер подвала (посередине) */
+#footer_block2 {
+    float: left;
+    width: 173px;
+    margin-top: 10px;
+}
+
+/* третий контейнер подвала (посередине) */
+#footer_block3 {
+    float: left;
+    width: 150px;
+    margin-top: 10px;
+}
+
+/* четвёртый контейнер подвала (посередине) */
+#footer_block4 {
+    float: left;
+    width: 143px;
+    margin-top: 10px;
+}
+
+/* пятый контейнер подвала (справа) */
+#footer_block5 {
+    float: left;
+    width: 173px;
+    margin-top: 10px;
+}
+
+/* стилизация названий категорий в подвале */
+#ftr_block2_1, #ftr_block3_1, #ftr_block4_1, #ftr_block5_1 {
+    font-weight: 600;
+    font-size: 17px;
+    margin-left: 2px;
+    color: #375349;
+}
+
+/* стилизация названий подкатегорий в подвале */
+#ftr_block2_2,  #ftr_block2_3, #ftr_block2_4, #ftr_block2_5, #ftr_block2_6, #ftr_block3_2,  #ftr_block3_3,
+#ftr_block3_4, #ftr_block3_5, #ftr_block3_6, #ftr_block4_2, #ftr_block4_3, #ftr_block4_4, #ftr_block5_2,
+#ftr_block5_3 {
+    margin-bottom: 10px;
+    line-height: 130%;
+}
+
+.footer-sub-category {
+    color: grey;
+}
+
+/* выше - стилизация лэйаута, ниже - контент на отдельных страницах */
+
+/* Cтраница "О нас" */
+
+/* контейнер с текстом "О нас" */
+.about_content {
+    width: 800px;
+    margin: 50px auto 100px;
+    text-align: left;
+}
+
+/* списки в контейнере с текстом "О нас" */
+.about_content ul {
+    margin-left: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Страница с категориями товаров в магазине */
+
+/* общий контейнер для магазина */
+.shop_body {
+    display: flex;
+    width: 900px;
+    margin: 20px auto auto;
+}
+
+/* контейнер для категорий товаров */
+.shop_category {
+    margin: 0;
+    width: 250px;
+    height: 400px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.shop_category ul {
+    padding-left: 15px;
+}
+
+.shop_category li {
+    margin-bottom: 10px;
+    font-size: 80%;
+}
+
+.selected {
+    color: #088256;
+}
+
+/* полоса над категориями в каталоге */
+.sep_layout_3 {
+    display: block;
+    width: 170px;
+    height: 1.4px;
+    background-color: #c4c4c4;
+    margin: 30px 15px 20px;
+    border-radius: 5px;
+}
+
+.sep_layout_4 {
+    display: block;
+    width: 170px;
+    height: 1.2px;
+    background-color: #c4c4c4;
+    margin: 30px 15px 20px;
+    border-radius: 5px;
+}
+
+/* контейнер для товаров */
+.products {
+    width: 800px;
+}
+
+.products ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 5px;
+    width: 800px;
+}
+
+.products li {
+    /*background-color: #F0EEFF;*/
+    margin: 7px;
+    padding: 10px;
+    width: 220px;
+    height: 300px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-size: 80%;
+}
+
+.price {
+    vertical-align: middle;
+}
+
+/* кнопка добавления товара в корзину */
+.products button {
+    /*border-radius: 20px;*/
+}
+
+.name_category {
+    width: 600px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+img_product {
+    width: auto;
+    height: auto;
+}
+
+/* блок со стрелками для навигации по страницам */
+.paginator_buttons {
+    width: 900px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.paginator_buttons ul {
+    display: flex;
+    margin: auto auto 20px 180px;
+    font-size: 140%;
+    font-family: TT Norms Light;
+    font-weight: bold;
+}
+
+.paginator_buttons li {
+    margin-right: 25px;
+}
+
+/* кнопка для перемещения на страницу влево (видимая часть - зелёный фон, скруглённые углы, ширина/высота) */
+.arrow_paginator1_left {
+    background: #088256;
+    text-align: center;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 25px;
+    margin-top: 2.5px;
+}
+
+/* задание смещения для выравнивания стрелки на фоне */
+.arrow_paginator1_left s {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin-left: 12px;
+}
+
+/* задание ширины/высоты блока со ссылкой */
+.arrow_paginator1_left a {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+/* задание внешнего вида самой стрелки (толщина, длина, цвет) */
+.arrow_paginator2 {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
+    border-color: white;
+}
+
+/* задание внешнего вида самой стрелки (толщина, длина, цвет) */
+.arrow_paginator_first_left {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    position: relative;
+    left: -4px;
+    padding: 4px;
+    border-color: white;
+}
+
+/* задание внешнего вида самой стрелки (толщина, длина, цвет) */
+.arrow_paginator_first_right {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    position: relative;
+    top: -24.7px;
+    left: 4px;
+    padding: 4px;
+    border-color: white;
+}
+
+/* задание угла поворота стрелки */
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+/* кнопка для перемещения на страницу вправо (видимая часть - зелёный фон, скруглённые углы, ширина/высота) */
+.arrow_paginator1_right {
+    background: #088256;
+    text-align: center;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 25px;
+    margin-top: 2.5px;
+}
+
+/* задание смещения для выравнивания стрелки на фоне */
+.arrow_paginator1_right s {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin-left: 7px;
+}
+
+/* задание ширины/высоты блока со ссылкой */
+.arrow_paginator1_right a {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+/* задание угла поворота стрелки */
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+/* задание угла поворота стрелки */
+.right_right {
+    transform: rotate(-183deg);
+    -webkit-transform: rotate(-183deg);
+}
+
+/* многоточие в пагинации */
+.ellipsis {
+    font-size: 150%;
+    position: relative;
+    top: -12px;
+}
+
+#mail_form_wrap {
+    background-color: #088256;
+    height: 115px;
+}
+
+#mail_form {
+    width: 900px;
+    height: 115px;
+    margin: auto;
+}
+
+#mail_form ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    height: 115px;
+}
+
+#input_label {
+    width: 407px;
+    height: 50px;
+    color: #ffffff;
+    font-size: 135%;
+    margin: 23px 80px auto 0;
+    vertical-align: middle;
+}
+
+#input {
+    width: 400px;
+    height: 50px;
+    margin-top: 25px;
+}
+
+#input_input {
+    width: 400px;
+    height: 53px;
+}
+
+#input_label_submit {
+    color: #088256;
+    position: relative;
+    top: -40px;
+    left: 300px;
+}
+
+.submit_line {
+    position: relative;
+    top: -38px;
+    left: 301px;
+    height: 2px;
+    background-color: #088256;
+    width: 80px;
+}
+
+/* страница с формой добавления товара */
+.form_conteiner {
+    width: 900px;
+    margin: auto auto;
+}
+
+form.add_product {
+    width: 500px;
+    margin: 20px auto 20px 50px;
+}
+
+ul.errorlist {
+    color: red;
+    /*list-style: none;*/
+    padding: 0;
+}
+
+.form-label {
+    width: 150px;
+}
+
+.about-container {
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-container li {
+    margin-left: 400px;
+}
+
